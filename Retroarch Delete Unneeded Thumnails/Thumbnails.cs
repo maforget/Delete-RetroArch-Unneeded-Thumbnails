@@ -20,9 +20,9 @@ namespace Retroarch_Delete_Unneeded_Thumnails
                 AssociatedThumbs.Add(thumb.BoxartPath);
                 AssociatedThumbs.Add(thumb.SnapPath);
                 AssociatedThumbs.Add(thumb.TitlePath);
-                MissingFiles.AddRange(thumb.MissingFiles);
             }
 
+            MissingFiles.AddRange(thumb.MissingFiles);
             return thumb;
         }
 

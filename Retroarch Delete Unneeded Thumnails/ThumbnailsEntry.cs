@@ -20,6 +20,8 @@ namespace Retroarch_Delete_Unneeded_Thumnails
         public ThumbnailsEntry(string playlist, string romName)
         {
             string basePath = Paths.ThumbnailsBasePath;
+            MissingFiles = new List<string>();
+
             RomName = Regex.Replace(romName, @"[&*:`<>?|\/\\]", "_");//Change Illegal Char to _
 
             BoxartPath = Path.Combine(basePath, playlist, "Named_Boxarts", RomName) + ".png";
@@ -29,33 +31,28 @@ namespace Retroarch_Delete_Unneeded_Thumnails
             VerifyFilesExists(BoxartPath, SnapPath, TitlePath);
         }
 
-        public bool VerifyFilesExists(string boxart, string snap, string title)
+        public void VerifyFilesExists(string boxart, string snap, string title)
         {
             FilesExists = false;
-            MissingFiles = new List<string>();
 
             if (CheckMissingFiles(boxart) | CheckMissingFiles(snap) | CheckMissingFiles(title))
             {
                 FilesExists = true;
             }
-
-            return FilesExists;
         }
 
         public bool CheckMissingFiles(string path)
         {
-            FilesExists = false;
-
             if (File.Exists(path))
             {
-                FilesExists = true;
+                return true;
             }
             else
             {
                 MissingFiles.Add(path);
             }
 
-            return FilesExists;
+            return false;
         }
 
     }
