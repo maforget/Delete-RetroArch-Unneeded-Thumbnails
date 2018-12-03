@@ -5,3 +5,5 @@ Usage
 ```
 Delete.Unneeded.RetroArch.Thumnails.exe <pathToRetroARch>
 ```
+### Example
+![](https://user-images.githubusercontent.com/11904426/49401071-1d6eb000-f714-11e8-8f32-f206e70b6e40.jpg)
