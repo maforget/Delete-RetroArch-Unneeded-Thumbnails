@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4D675CA0-3068-4919-9877-2E105D77029E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Retroarch_Delete_Unneeded_Thumnails</RootNamespace>
-    <AssemblyName>Delete Unneeded RetroArch Thumnails</AssemblyName>
+    <RootNamespace>Retroarch_Delete_Unneeded_Thumbnails</RootNamespace>
+    <AssemblyName>Delete Unneeded RetroArch Thumbnails</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
