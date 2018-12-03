@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retroarch Delete Unneeded Thumnails", "Retroarch Delete Unneeded Thumnails\Retroarch Delete Unneeded Thumnails.csproj", "{4D675CA0-3068-4919-9877-2E105D77029E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D675CA0-3068-4919-9877-2E105D77029E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D675CA0-3068-4919-9877-2E105D77029E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D675CA0-3068-4919-9877-2E105D77029E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D675CA0-3068-4919-9877-2E105D77029E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DAF2A05-ACBF-4808-95E1-7B2C78D6E0C3}
+	EndGlobalSection
+EndGlobal
