@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Retroarch_Delete_Unneeded_Thumnails
 {
@@ -18,16 +19,30 @@ namespace Retroarch_Delete_Unneeded_Thumnails
         {
             PlaylistPath = path;
             PlaylistName = Path.GetFileNameWithoutExtension(PlaylistPath);
-            string[] RawPlaylist = File.ReadAllLines(PlaylistPath);
             PlaylistEntries = new List<PlaylistEntry>();
 
-            for (int i = 0; i < RawPlaylist.Length; i+=6)
+            //For New Json Playlists
+            try
             {
-                string[] RawPlaylistEntry = new string[6];
-                Array.Copy(RawPlaylist, i, RawPlaylistEntry, 0, 6);
+                var doc = JsonConvert.DeserializeObject<JsonRoot>(File.ReadAllText(path));
+                foreach (PlaylistJson RawPlaylistEntry in doc.items)
+                {
+                    PlaylistEntry entry = new PlaylistEntry(RawPlaylistEntry);
+                    PlaylistEntries.Add(entry);
+                }
+            }
+            catch (JsonReaderException)
+            {
+                //For Old playlists style
+                string[] RawPlaylist = File.ReadAllLines(PlaylistPath);
+                for (int i = 0; i < RawPlaylist.Length; i += 6)
+                {
+                    string[] RawPlaylistEntry = new string[6];
+                    Array.Copy(RawPlaylist, i, RawPlaylistEntry, 0, 6);
 
-                PlaylistEntry entry = new PlaylistEntry(RawPlaylistEntry);
-                PlaylistEntries.Add(entry);
+                    PlaylistEntry entry = new PlaylistEntry(RawPlaylistEntry);
+                    PlaylistEntries.Add(entry);
+                }
             }
         }
     }
