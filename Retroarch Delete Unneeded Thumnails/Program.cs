@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using ByteSizeLib;
 
-namespace Retroarch_Delete_Unneeded_Thumnails
+namespace Retroarch_Delete_Unneeded_Thumbnails
 {
     class Program
     {

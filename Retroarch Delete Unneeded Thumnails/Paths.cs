@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Retroarch_Delete_Unneeded_Thumnails
+namespace Retroarch_Delete_Unneeded_Thumbnails
 {
     public static class Paths
     {

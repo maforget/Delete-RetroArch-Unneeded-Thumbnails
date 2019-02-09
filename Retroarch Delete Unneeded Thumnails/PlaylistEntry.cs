@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Retroarch_Delete_Unneeded_Thumnails
+namespace Retroarch_Delete_Unneeded_Thumbnails
 {
     [JsonObject]
     class PlaylistEntry

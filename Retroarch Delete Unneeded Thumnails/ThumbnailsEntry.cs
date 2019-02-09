@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Retroarch_Delete_Unneeded_Thumnails
+namespace Retroarch_Delete_Unneeded_Thumbnails
 {
     class ThumbnailsEntry
     {
