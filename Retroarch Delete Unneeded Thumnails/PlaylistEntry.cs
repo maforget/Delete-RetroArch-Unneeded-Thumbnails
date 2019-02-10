@@ -4,24 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Retroarch_Delete_Unneeded_Thumbnails
 {
     [JsonObject]
     class PlaylistEntry
     {
-        [JsonProperty("path")]
         public string RomPath { get; set; }
-        [JsonProperty("label")]
         public string RomName { get; set; }
-        [JsonProperty("core_path")]
         public string CorePath { get; set; }
-        [JsonProperty("core_name")]
         public string CoreName { get; set; }
-        [JsonProperty("crc32")]
         public string Checksum { get; set; }
-        [JsonProperty("db_name")]
         public string PlaylistName { get; set; }
+        public string AbsoluteZipPath { get; set; }
         public ThumbnailsEntry AssociatedThumb { get; set; }
 
         //New Style for version 1.7.6+
@@ -34,6 +30,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
             Checksum = PlaylistEntry.crc32;
             PlaylistName = PlaylistEntry.db_name.Substring(0, PlaylistEntry.db_name.Length - 4);//Remove .lpl at the end of the string
 
+            AbsoluteZipPath = GetAbsoluteZipPath(RomPath);
             AssociatedThumb = Thumbnail.NewThumbnailEntry(PlaylistName, RomName);
         }
 
@@ -50,7 +47,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
                     {
                         case 0:
                             RomPath = line;
-                        break;
+                            break;
                         case 1:
                             RomName = line;
                             break;
@@ -73,7 +70,30 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
                 }
             }
 
+            AbsoluteZipPath = GetAbsoluteZipPath(RomPath);
             AssociatedThumb = Thumbnail.NewThumbnailEntry(PlaylistName, RomName);
+        }
+
+
+        private string GetAbsoluteZipPath(string romPath)
+        {
+            string zipPath = romPath.Split('#')[0];
+
+            if (Directory.GetCurrentDirectory() != Paths.RetroarchBasePath && File.Exists(zipPath))
+            {
+                return zipPath;
+            }
+            else
+            {
+                string absPath = Path.Combine(Paths.RetroarchBasePath, zipPath);
+                if (File.Exists(absPath))
+                {
+                    return absPath;
+                }
+            }
+
+            //File Doesn't Exists
+            return null;
         }
     }
 }

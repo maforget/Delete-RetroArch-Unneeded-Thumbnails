@@ -71,6 +71,7 @@
     <Compile Include="PlaylistEntry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomChecker.cs" />
     <Compile Include="Thumbnails.cs" />
     <Compile Include="ThumbnailsEntry.cs" />
   </ItemGroup>

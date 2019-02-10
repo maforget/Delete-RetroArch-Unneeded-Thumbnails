@@ -13,7 +13,6 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
         public string PlaylistPath { get; set; }
         public string PlaylistName { get; set; }
         public List<PlaylistEntry> PlaylistEntries { get; set; }
-        public List<string> MissingFiles { get; set; }
 
         public Playlist(string path)
         {

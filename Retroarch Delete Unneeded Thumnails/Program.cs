@@ -13,11 +13,12 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
         static void Main(string[] args)
         {
             Console.SetWindowSize(160, 40);
-            string ArgsPath = args.Length >= 1 ? args[0] : string.Empty;
+            string ArgsPath = args.Length >= 1 ? args[0] : Directory.GetCurrentDirectory();
 
             if (string.IsNullOrEmpty(ArgsPath))
             {
                 Console.WriteLine("No argument passed, You need to pass the RetroArch path as an argument");
+                Console.WriteLine("Or start the program from Retroarch directly");
                 Exit();
             }
 
@@ -42,6 +43,26 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
             }
 
             Console.WriteLine("Found {0} playlists", PlaylistsFiles.Count);
+            Console.WriteLine("");
+
+            Console.WriteLine("Checking for Missing ROMS inside the Playlists");
+            var MissingRomFiles = RomChecker.CheckNotDetectedRoms(Playlists);
+            int MissingRoms = MissingRomFiles.Count;
+
+            if (MissingRoms > 0)
+            {
+                Console.WriteLine("The following Roms are not in any playlists:");
+                foreach (var item in MissingRomFiles)
+                {
+                    Console.WriteLine("- {0}", GetFileName(item));
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no missing Roms inside the Playlists");
+            }
+
+            Console.WriteLine("");
             Console.WriteLine("Checking all thumbnails");
             var UnneededImages = Thumbnail.GetUnassociatedImages(Playlists);
             int MissingFiles = Thumbnail.MissingFiles.Count;
