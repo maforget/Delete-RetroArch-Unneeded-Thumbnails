@@ -26,7 +26,8 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
                 //Enumerate all the files inside the path
                 if (!string.IsNullOrEmpty(RomDir))
                 {
-                    var Roms = Directory.EnumerateFiles(RomDir, "*.*", SearchOption.AllDirectories);
+                    string[] excluded = { ".srm", ".dsv", ".state", ".png", "\\user\\", "\\psp\\", "\\citra\\", ".mcr" };
+                    var Roms = Directory.EnumerateFiles(RomDir, "*.*", SearchOption.AllDirectories).Where(i => !excluded.Any(x => i.ToLower().Contains(x)));
 
                     foreach (string romPath in Roms)
                     {
