@@ -18,7 +18,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
             if (string.IsNullOrEmpty(ArgsPath))
             {
                 Console.WriteLine("No argument passed, You need to pass the RetroArch path as an argument");
-                Console.WriteLine("Or start the program from Retroarch directly");
+                Console.WriteLine("Or start the program from Retroarch directory directly");
                 Exit();
             }
 
