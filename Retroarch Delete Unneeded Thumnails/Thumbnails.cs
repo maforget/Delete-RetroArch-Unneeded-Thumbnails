@@ -35,7 +35,8 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
             foreach (var item in playlists.Select(x => x.PlaylistName))
             {
                 string path = Path.Combine(basePath, item);
-                Allimages.AddRange(Directory.EnumerateFiles(path, "*.png", SearchOption.AllDirectories).ToList());
+                if (Directory.Exists(path))
+                    Allimages.AddRange(Directory.EnumerateFiles(path, "*.png", SearchOption.AllDirectories).ToList());
             }
 
             foreach (var item in Allimages)
