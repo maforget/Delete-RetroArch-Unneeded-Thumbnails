@@ -19,14 +19,22 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
 
         public ThumbnailsEntry(string playlist, string romName)
         {
+
             string basePath = Paths.ThumbnailsBasePath;
             MissingFiles = new List<string>();
 
             RomName = Regex.Replace(romName, @"[&*:`<>?|\/\\]", "_");//Change Illegal Char to _
 
-            BoxartPath = Path.Combine(basePath, playlist, "Named_Boxarts", RomName) + ".png";
-            SnapPath = Path.Combine(basePath, playlist, "Named_Snaps", RomName) + ".png";
-            TitlePath = Path.Combine(basePath, playlist, "Named_Titles", RomName) + ".png";
+            try
+            {
+                BoxartPath = Path.Combine(basePath, playlist, "Named_Boxarts", RomName) + ".png";
+                SnapPath = Path.Combine(basePath, playlist, "Named_Snaps", RomName) + ".png";
+                TitlePath = Path.Combine(basePath, playlist, "Named_Titles", RomName) + ".png";
+            }
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine($"Illegal Character in {playlist}\\{romName}");
+            }
 
             VerifyFilesExists(BoxartPath, SnapPath, TitlePath);
         }
