@@ -33,7 +33,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
             }
             catch (ArgumentException)
             {
-                Console.Error.WriteLine($"Illegal Character in {playlist}\\{romName}");
+                Console.Error.WriteLine($"Illegal Character in {playlist}\\{RomName}");
             }
 
             VerifyFilesExists(BoxartPath, SnapPath, TitlePath);
