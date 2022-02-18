@@ -129,7 +129,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
 
         private static string GetFileName(string item)
         {
-            return item.Replace(Paths.ThumbnailsBasePath + "\\", "");
+            return item?.Replace(Paths.ThumbnailsBasePath + "\\", "");
         }
 
         public static void DeleteFile(string file)
