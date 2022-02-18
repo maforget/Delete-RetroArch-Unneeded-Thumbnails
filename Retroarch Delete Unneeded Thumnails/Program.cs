@@ -12,6 +12,7 @@ namespace Retroarch_Delete_Unneeded_Thumbnails
     {
         static void Main(string[] args)
         {
+            Console.BufferHeight = Int16.MaxValue - 1;
             Console.SetWindowSize(160, 40);
             string ArgsPath = args.Length >= 1 ? args[0] : Directory.GetCurrentDirectory();
 
